@@ -1,0 +1,22 @@
+// frontend docker command to build a docker container
+docker run -it -p 3000:3000 -v /mnt/c/Users/johnb/OneDrive/Desktop/Github_Code/IntelliDrive/my-react-app/:/my-react-app/ test_node
+docker run -it -p 3000:3000 -v ./:/intelli_drive intellidrive-frontend
+
+// bakcend docker command to build a docker container
+docker run -it -p 8080:8080 -v /mnt/c/Users/johnb/OneDrive/Desktop/Github_Code/IntelliDrive/backend:/backend test_java
+docker run -it -p 8080:8080 back_test
+
+// List all running docker containers
+docker container ls
+
+// Connect with a command terminal to a docker container
+docker exec -it DOCKERID /bin/bash
+
+// Start the docker containers 
+docker-compose up
+
+// Kill all active docker containers
+docker kill $(docker ps -q)
+
+// Start the maven api backend service
+mvn spring-boot:run
