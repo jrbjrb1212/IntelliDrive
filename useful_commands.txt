@@ -18,5 +18,10 @@ docker-compose up
 // Kill all active docker containers
 docker kill $(docker ps -q)
 
-// Start the maven api backend service
+// Start the maven/springboot api backend service LOCALLY
+// = in backend/backend_services
 mvn spring-boot:run
+
+// Start reactjs app LOCALLY
+// - in frontend/intelli_drive
+npm start

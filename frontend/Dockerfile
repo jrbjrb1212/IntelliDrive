@@ -9,6 +9,7 @@ COPY ./intelli_drive .
 
 # Install dependencies
 RUN npm install
+RUN npm install react-router-dom
 
 # Expose port 3000 (or the port that React app runs on)
 EXPOSE 3000

@@ -7,8 +7,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
-    volumes:
-      - ./frontend/intelli_drive:/intelli_drive
+    # volumes:
+    #   - ./frontend/intelli_drive:/intelli_drive
     stdin_open: true
     tty: true
     depends_on:

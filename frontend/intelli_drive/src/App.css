@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+
+.centered-div {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.centered-div button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

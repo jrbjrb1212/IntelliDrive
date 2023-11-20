@@ -1,0 +1,19 @@
+/* Belkhiter.css */
+.words-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .belkhiter-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .random-word {
+    position: absolute;
+    font-family: Arial, sans-serif; /* Font family */
+    color: #000000; /* Text color */
+  }
+  

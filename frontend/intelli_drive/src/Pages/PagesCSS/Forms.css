@@ -1,0 +1,344 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+a {
+	text-decoration: none;
+}
+ul {
+	list-style-type: none;
+}
+
+
+.radio-section {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+}
+h1 {
+	margin-bottom: 20px;
+}
+.radio-item [type="radio"] {
+	display: none;
+}
+.radio-item + .radio-item {
+	margin-top: 15px;
+}
+.radio-item label {
+    display: block;
+    padding: 20px 60px;
+    background: #fff; /* Changed background to white */
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 400;
+    min-width: 250px;
+    white-space: nowrap;
+    position: relative;
+    transition: 0.4s ease-in-out 0s;
+}
+
+.radio-item label:after,
+.radio-item label:before {
+	content: "";
+	position: absolute;
+	border-radius: 50%;
+}
+.radio-item label:after {
+	height: 19px;
+	width: 19px;
+	border: 2px solid #524eee;
+	left: 19px;
+	top: calc(50% - 12px);
+}
+.radio-item label:before {
+	background: #524eee;
+	height: 20px;
+	width: 20px;
+	left: 21px;
+	top: calc(50%-5px);
+	transform: scale(5);
+	opacity: 0;
+	visibility: hidden;
+	transition: 0.4s ease-in-out 0s;
+}
+.radio-item [type="radio"]:checked ~ label {
+	border-color: #524eee;
+}
+.radio-item [type="radio"]:checked ~ label::before {
+	opacity: 1;
+	visibility: visible;
+	transform: scale(1);
+}
+
+.box-outline {
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	padding: 20px;
+	margin-bottom: 20px;
+  }
+  
+  .form-section {
+	border: none;
+	padding: 10px;
+  }
+  
+  .form-section.expanded {
+	border: 1px solid #3498db;
+	border-radius: 6px;
+  }
+
+/* Styles for the modal overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999; /* Ensures the modal is on top of other content */
+}
+
+/* Styles for the modal content */
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 90%;
+  max-height: 90%;
+  overflow: auto;
+  position: relative;
+}
+
+/* Styles for the close button */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 24px;
+  color: #aaa;
+}
+
+/* Styles for yes/no boxes*/
+.form-checkbox {
+	display: flex;
+	align-items: center;
+	margin-bottom: 15px;
+  }
+  
+  .form-checkbox input[type='radio'] {
+	margin-right: 10px; /* Adjust the space between radio button and label */
+  }
+  
+  .form-checkbox label {
+	display: flex;
+	align-items: center;
+  }
+
+/* Styles for location subgrids*/
+.location-box {
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	padding: 10px;
+	margin-bottom: 20px;
+  }
+  
+  .location-box h3 {
+	margin-bottom: 10px;
+	font-size: 18px;
+  }
+  
+  .location-box .form-label {
+	display: block;
+	margin-bottom: 10px;
+  }
+  
+  .location-box .form-input {
+	width: 100%;
+	padding: 8px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	font-size: 16px;
+	margin-top: 5px;
+  }
+  
+  /* Time subgrid for hours, minutes, AM/PM selection */
+  .time-picker {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 10px;
+  }
+  
+  .time-select {
+	width: 100%;
+	padding: 8px;
+	border-radius: 4px;
+	border: 1px solid #ccc;
+	background-color: #fff;
+	font-size: 16px;
+	outline: none;
+	transition: border-color 0.3s ease-in-out;
+  }
+  
+  .time-select:hover,
+  .time-select:focus {
+	border-color: #3498db;
+  }
+
+  .schedule-info {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 10px;
+	margin-bottom: 20px;
+  }
+  
+  .schedule-info .form-label {
+	display: block;
+	margin-bottom: 10px;
+  }
+  
+  .schedule-info .form-input {
+	width: 100%;
+	padding: 8px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	font-size: 16px;
+  }
+  
+  .submit-button {
+	/* Your existing submit button styles */
+  }
+
+  .ride-card {
+	/* ...existing styles... */
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	padding: 12px;
+	margin-bottom: 12px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	background-color: #fff;
+  
+	/* Ensure the container is relative for positioning the delete button */
+	position: relative;
+  }
+  
+  /* Style for the delete button */
+  .ride-card button {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	background-color: #ff6347; /* Change this to your desired background color */
+	color: #fff;
+	border: none;
+	border-radius: 50%; /* Makes the button circular */
+	width: 30px;
+	height: 30px;
+	font-size: 16px;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  }
+  
+  /* Adjust button on hover state */
+  .ride-card button:hover {
+	background-color: #e74c3c; /* Change this to your desired hover color */
+  }
+  /* Add styles for the dropdown */
+.form-dropdown {
+	position: relative;
+	display: inline-block;
+	width: 200px; /* Adjust width as needed */
+  }
+  
+  /* Hide default dropdown arrow */
+  .form-select {
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	background-color: #fff;
+	font-size: 16px;
+	cursor: pointer;
+	outline: none;
+	position: relative;
+  }
+  
+  /* Custom dropdown arrow */
+  .form-select::after {
+	content: '\25BE'; /* Unicode arrow-down character */
+	font-size: 12px;
+	color: #555;
+	position: absolute;
+	top: 50%;
+	right: 10px;
+	transform: translateY(-50%);
+  }
+  
+  /* Style for dropdown options */
+  .form-select option {
+	background-color: #fff;
+	color: #555;
+  }
+  
+  /* Style for the selected option */
+  .form-select option:checked {
+	background-color: #f9f9f9;
+  }
+  
+  /* Hover effect for dropdown options */
+  .form-select option:hover {
+	background-color: #f1f1f1;
+  }
+
+  /* Forms Page Styles */
+/* ... (your existing styles) */
+
+/* Positioning for buttons */
+.go-back-button {
+	position: fixed;
+	bottom: 20px;
+	left: 20px;
+	padding: 10px 20px;
+	font-size: 1em;
+	background-color: #3498db;
+	color: #fff;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+  }
+  
+  .go-logout-button {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	padding: 10px 20px;
+	font-size: 1em;
+	background-color: #e74c3c;
+	color: #fff;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+  }
+  
+  .go-back-button:hover {
+	background-color: #2980b9;
+  }
+  
+  .go-logout-button:hover {
+	background-color: #c0392b;
+  }
+  
