@@ -57,14 +57,15 @@ $ docker exec -it DOCKERID /bin/bash
     - [Maven](https://maven.apache.org/download.cgi) to run the backend application
 - Test installs using:
     - **npm --version** for Node
-    - **java --version** for Java 17
-        - Verify that Java 17 is installed should be something like openjdk 17.0.something
+    - **java --version** for Java 17 or 21
+        - Verify that Java 17 or 21 is installed should be something like openjdk 17.0.something or 21.0.something
     - **mvn --version** for Maven
 
 *Now we hope and pray that the installed frameworks are close enough to the code to work*
 - Open two terminal windows
 - In one terminal window, navigate to the frontend/intelli_drive/
     - Run npm install
+    - Run npm install axios
     - Run npm start
 - In the other terminal window, navigate to backend/backend_services/
     - Run mvn spring-boot:run
