@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import '../PagesCSS/Forms.css'
 
 const RideReservationForm = ({ closeModal }) => {
@@ -51,6 +52,15 @@ const RideReservationForm = ({ closeModal }) => {
     e.preventDefault();
     console.log(formData);
     //TODO: Send data to an API
+    axios.post('http://localhost:8080/RouteReserve/RideForm', formData)
+    .then(response => {
+      // Handle the response of the POST request
+      console.log(response.data);
+    })
+    .catch(error => {
+      // Handle errors
+      console.error('There was an error with the POST request:', error);
+    });
     closeModal();
   };
   
