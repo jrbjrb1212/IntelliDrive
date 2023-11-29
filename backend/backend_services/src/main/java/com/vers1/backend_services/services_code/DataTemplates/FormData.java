@@ -1,7 +1,8 @@
 package com.vers1.backend_services;
 
 import com.google.gson.Gson;
- 
+
+// Sample Java object that can represent form data
 public class FormData {
     // private String userID;
     private String firstName;

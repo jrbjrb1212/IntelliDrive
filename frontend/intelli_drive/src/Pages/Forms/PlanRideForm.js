@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../PagesCSS/Forms.css'
 
 const PlanRideForm = ({ closeModal }) => {
+  // State based storage of form data
   const [formData, setFormData] = useState({
     numberOfPassengers: 1,
     carpool: false,
@@ -25,6 +26,8 @@ const PlanRideForm = ({ closeModal }) => {
     },
   });
 
+  // Handle update to a input field
+  // Ex: Inputing the first name
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     if (name.startsWith('pickupLocation') || name.startsWith('dropOffLocation')) {
@@ -44,6 +47,7 @@ const PlanRideForm = ({ closeModal }) => {
     }
   };
 
+  // Handle submission of form 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
@@ -51,12 +55,14 @@ const PlanRideForm = ({ closeModal }) => {
     closeModal();
   };
 
+  // Array of hours 1->12
   const hoursOptions = Array.from({ length: 12 }, (_, i) => (
     <option key={i + 1} value={(i + 1).toString().padStart(2, '0')}>
       {(i + 1).toString().padStart(2, '0')}
     </option>
   ));
 
+  // Array of minutes 0->59
   const minutesOptions = Array.from({ length: 60 }, (_, i) => (
     <option key={i} value={i.toString().padStart(2, '0')}>
       {i.toString().padStart(2, '0')}
@@ -67,6 +73,8 @@ const PlanRideForm = ({ closeModal }) => {
     <div className="box-outline">
       <form className="form-section" onSubmit={handleSubmit}>
         <h2>Ride Planner</h2>
+
+        {/* Number passengers Field */}
         <label className="form-label">
           Number of Passengers:
           <input
@@ -77,6 +85,8 @@ const PlanRideForm = ({ closeModal }) => {
             className="form-input"
           />
         </label>
+
+        {/* Carpool option Field */}
         <label className="form-label">
           Willingness to Carpool:
           <div className="form-checkbox">
@@ -100,6 +110,8 @@ const PlanRideForm = ({ closeModal }) => {
             <label>No</label>
           </div>
         </label>
+
+        {/* Dates of Rides Field */}
         <label className="form-label">
           Date of Ride:
           <input
@@ -111,10 +123,12 @@ const PlanRideForm = ({ closeModal }) => {
           />
         </label>
 
+        {/* Time of Ride Field */}
         <div className="time-of-ride">
           <label className="form-label">
             Time of Ride:
             <div className="time-picker">
+              {/* Hour Field */}
               <select
                 name="hour"
                 value={formData.hour}
@@ -123,6 +137,8 @@ const PlanRideForm = ({ closeModal }) => {
               >
                 {hoursOptions}
               </select>
+
+              {/* Minute Field */}
               <select
                 name="minute"
                 value={formData.minute}
@@ -131,6 +147,8 @@ const PlanRideForm = ({ closeModal }) => {
               >
                 {minutesOptions}
               </select>
+
+              {/* AM/PM Field */}
               <select
                 name="period"
                 value={formData.period}
@@ -254,6 +272,7 @@ const PlanRideForm = ({ closeModal }) => {
           </label>
         </div>
 
+        {/* Submit Button Field */}
         <button type="submit" className="submit-button">
           Submit
         </button>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../PagesCSS/Forms.css'
 
 const ScheduleReservationForm = ({ closeModal }) => {
+  // State based storage of form data
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -28,6 +29,8 @@ const ScheduleReservationForm = ({ closeModal }) => {
     },
   });
 
+  // Handle update to a input field
+  // Ex: Inputing the first name
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
   
@@ -57,19 +60,25 @@ const ScheduleReservationForm = ({ closeModal }) => {
   };
   
 
+  // Handle submission of form 
   const handleSubmit = (e) => {
+    // Prevent empty submission
+    // TODO: Parse relevant fields to verify that they are filled correctly
     e.preventDefault();
+    
     console.log(formData);
     //TODO: Send data to an API
     closeModal();
   };
   
+  // Array of hours 1->12
   const hoursOptions = Array.from({ length: 12 }, (_, i) => (
     <option key={i + 1} value={(i + 1).toString().padStart(2, '0')}>
       {(i + 1).toString().padStart(2, '0')}
     </option>
   ));
 
+  // Array of minutes 0->59
   const minutesOptions = Array.from({ length: 60 }, (_, i) => (
     <option key={i} value={i.toString().padStart(2, '0')}>
       {i.toString().padStart(2, '0')}
@@ -80,6 +89,8 @@ const ScheduleReservationForm = ({ closeModal }) => {
     <div className="box-outline">
       <form className="form-section" onSubmit={handleSubmit}>
         <h2>Schedule Reservation</h2>
+
+        {/* First Name Field */}
         <label className="form-label">
           First Name:
           <input
@@ -90,6 +101,8 @@ const ScheduleReservationForm = ({ closeModal }) => {
             className="form-input"
           />
         </label>
+
+        {/* Last Name Field */}
         <label className="form-label">
           Last Name:
           <input
@@ -100,6 +113,8 @@ const ScheduleReservationForm = ({ closeModal }) => {
             className="form-input"
           />
         </label>
+
+        {/* Number passengers Field */}
         <label className="form-label">
           Number of Passengers:
           <input
@@ -110,6 +125,8 @@ const ScheduleReservationForm = ({ closeModal }) => {
             className="form-input"
           />
         </label>
+
+        {/* Carpool option Field */}
         <label className="form-label">
           Willingness to Carpool:
           <div className="form-checkbox">
@@ -133,6 +150,8 @@ const ScheduleReservationForm = ({ closeModal }) => {
             <label>No</label>
           </div>
         </label>
+
+        {/* Dates of Rides Field */}
         <label className="form-label">
           Date of First Ride in Schedule:
           <input
@@ -144,10 +163,12 @@ const ScheduleReservationForm = ({ closeModal }) => {
           />
         </label>
 
+        {/* Time of Ride Field */}
         <div className="time-of-ride">
           <label className="form-label">
             Time of Scheduled Rides:
             <div className="time-picker">
+              {/* Hour Field */}
               <select
                 name="hour"
                 value={formData.hour}
@@ -156,6 +177,8 @@ const ScheduleReservationForm = ({ closeModal }) => {
               >
                 {hoursOptions}
               </select>
+
+              {/* Minute Field */}
               <select
                 name="minute"
                 value={formData.minute}
@@ -164,6 +187,8 @@ const ScheduleReservationForm = ({ closeModal }) => {
               >
                 {minutesOptions}
               </select>
+
+              {/* AM/PM Field */}
               <select
                 name="period"
                 value={formData.period}
@@ -177,6 +202,7 @@ const ScheduleReservationForm = ({ closeModal }) => {
           </label>
         </div>
 
+        {/* Day of the week selection field */}
         <div className="schedule-info">
           <label className="form-label">
             Days of the Week:
@@ -212,6 +238,7 @@ const ScheduleReservationForm = ({ closeModal }) => {
           </label>
         </div>
         
+        {/* Purpose of Ride field */}
         <label className="form-label">
           Purpose of Ride:
           <input
@@ -222,6 +249,7 @@ const ScheduleReservationForm = ({ closeModal }) => {
             className="form-input"
           />
         </label>
+
         {/* Pick-Up Location */}
         <div className="location-box">
           <h3>Pickup Location</h3>
@@ -332,6 +360,7 @@ const ScheduleReservationForm = ({ closeModal }) => {
           </label>
         </div>
 
+        {/* Submit Button Field */}
         <button type="submit" className="submit-button">
           Save Settings
         </button>

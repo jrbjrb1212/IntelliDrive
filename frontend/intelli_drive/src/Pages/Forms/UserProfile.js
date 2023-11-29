@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../PagesCSS/Forms.css';
 
 const UserProfile = ({ closeModal }) => {
+  // State based storage of form data
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -41,8 +42,10 @@ const UserProfile = ({ closeModal }) => {
     makePreference: '',
     modelPreference: '',
     yearPreference: '',
-});
+  });
 
+  // Handle update to a input field
+  // Ex: Inputing the first name
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData((prevData) => ({
@@ -51,10 +54,14 @@ const UserProfile = ({ closeModal }) => {
     }));
   };
 
+  // Handle submission of form 
   const handleSubmit = (event) => {
+    // Prevent empty submission
+    // TODO: Parse relevant fields to verify that they are filled correctly
     event.preventDefault();
     console.log(formData);
-    // Handle form submission logic for UserProfile
+
+    //TODO: Send data to an API
     closeModal();
   };
 
@@ -62,6 +69,8 @@ const UserProfile = ({ closeModal }) => {
     <div className="box-outline">
       <form className="form-section" onSubmit={handleSubmit}>
         <h2>User Profile</h2>
+
+        {/* First Name Field */}
         <label className="form-label">
           First Name:
           <input
@@ -73,6 +82,7 @@ const UserProfile = ({ closeModal }) => {
           />
         </label>
 
+        {/* Last Name Field */}
         <label className="form-label">
           Last Name:
           <input
@@ -84,6 +94,8 @@ const UserProfile = ({ closeModal }) => {
           />
         </label>
 
+
+        {/* Phone Number Field */}
         <label className="form-label">
           Phone Number:
           <input
@@ -95,6 +107,7 @@ const UserProfile = ({ closeModal }) => {
           />
         </label>
 
+        {/* Email Address Field */}
         <label className="form-label">
           Email Address:
           <input
@@ -106,6 +119,7 @@ const UserProfile = ({ closeModal }) => {
           />
         </label>
 
+        {/* Date Of Birth Field */}
         <label className="form-label">
           Date of Birth:
           <input
@@ -227,6 +241,7 @@ const UserProfile = ({ closeModal }) => {
           </label>
         </div>
 
+        {/* Spouse First Name Field */}
         <label className="form-label">
           Spouse First Name:
           <input
@@ -238,6 +253,7 @@ const UserProfile = ({ closeModal }) => {
           />
         </label>
 
+        {/* Spouse Last Name Field */}
         <label className="form-label">
           Spouse Last Name:
           <input
@@ -304,6 +320,8 @@ const UserProfile = ({ closeModal }) => {
           </label>
         </div>
 
+        {/* TODO: Add a list of vehicle makes */}
+        {/* Preferred Vehicle Make */}
         <label className="form-label">
           Preferred Vehicle Make
           <input
@@ -315,6 +333,8 @@ const UserProfile = ({ closeModal }) => {
           />
         </label>
 
+        {/* TODO: Add a list of vehicle models */}
+        {/* Preferred Vehicle Model */}
         <label className="form-label">
         Preferred Vehicle Model
           <input
@@ -326,6 +346,8 @@ const UserProfile = ({ closeModal }) => {
           />
         </label>
 
+        {/* TODO: Add a list of vehicle years 2000-Current */}
+        {/* Preferred Vehicle Year */}
         <label className="form-label">
           Preferred Vehicle Year
           <input
@@ -337,6 +359,7 @@ const UserProfile = ({ closeModal }) => {
           />
         </label>
 
+        {/* Submit Button Field */}
         <button type="submit" className="submit-button">
           Submit
         </button>

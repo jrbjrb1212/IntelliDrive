@@ -13,6 +13,7 @@ const ViewRides = ({ closeModal }) => {
     closeModal();
   };
 
+  // Convert string to minutes for sorting
   function timeStringToMinutes(timeString) {
     const [time, period] = timeString.split(' ');
     let [hours, minutes] = time.split(':').map(Number);
@@ -32,6 +33,7 @@ const ViewRides = ({ closeModal }) => {
     // Replace this with your logic to fetch ride data from your backend
     const fetchScheduledRides = async () => {
       try {
+        // TODO: Update with data pulled from API
         // Fetch ride data from your API or storage
         // For example:
         // const response = await fetch('your_api_endpoint');
@@ -50,6 +52,7 @@ const ViewRides = ({ closeModal }) => {
           ];
         
         // Custom sort function of the ride data
+        // - sort based on how close scheduled rides are
         const sortedRides = simulatedData.sort((rideA, rideB) => {
             const dateA = rideA.date.split('-').map(Number);
             const dateB = rideB.date.split('-').map(Number);
@@ -63,8 +66,7 @@ const ViewRides = ({ closeModal }) => {
             const timeA = timeStringToMinutes(rideA.time);
             const timeB = timeStringToMinutes(rideB.time);
             return (timeA < timeB) ? -1 : 1;
-        });
-         
+        }); 
           
         setScheduledRides(sortedRides);
       } catch (error) {
@@ -75,6 +77,7 @@ const ViewRides = ({ closeModal }) => {
     fetchScheduledRides();
   }, []);
 
+  // Removie a ride from the field of vision once it has been deleted
   const removeRide = (id) => {
     const updatedRides = scheduledRides.filter((ride) => ride.id !== id);
     setScheduledRides(updatedRides);
@@ -82,16 +85,18 @@ const ViewRides = ({ closeModal }) => {
     setDisplayConfirmation(false);
   };
   
+  // Confirm removal of ride
   const confirmRemoveRide = (ride) => {
     setRideToConfirm(ride);
     setDisplayConfirmation(true);
   };
 
+  // Different options for removing
   const handleOptionChange = (event) => {
     event.persist();
     const value = event.target.value;
     setSelectedOption(value);
-    console.log(value);
+
     if (value === "Yes") {
       removeRide(rideToConfirm.id);
       setRideToConfirm(null);
@@ -109,15 +114,19 @@ const ViewRides = ({ closeModal }) => {
   return (
     <div>
       <h2>Scheduled Rides</h2>
+      {/* Confirm Cancelation Overlay */}
       {displayConfirmation === true && (
         <div>
           <h2>Are you sure you want to cancel this ride?</h2>
+          {/* Information about ride to be canceled */}
           <div className="ride-card" key={rideToConfirm.id}>
             <p>Date: {rideToConfirm.date}</p>
             <p>Time: {rideToConfirm.time}</p>
             <p>Pickup: {rideToConfirm.pickup}</p>
             <p>Drop-off: {rideToConfirm.dropOff}</p>
           </div>
+
+          {/* Allow yes and no selections */}
           <label className="form-label">
             <div className="form-dropdown">
               <select
@@ -133,7 +142,9 @@ const ViewRides = ({ closeModal }) => {
           </label>
         </div>
       )}
-
+      
+      {/* Displays all scheduled rides for a user */}
+      {/* TODO: Add a message if there are no scheduled rides */}
       {displayConfirmation === false && (
         <div className="ride-cards-container">
         {scheduledRides.map((ride) => (
@@ -145,6 +156,7 @@ const ViewRides = ({ closeModal }) => {
                 <button onClick={() => confirmRemoveRide(ride)}>X</button>
             </div>
         ))}
+          {/* Allow users to leave the view if they want */}
           <button type="submit" onClick={handleSubmit}>
             Done Viewing?
           </button>

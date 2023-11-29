@@ -3,6 +3,7 @@ import axios from 'axios';
 import '../PagesCSS/Forms.css'
 
 const RideReservationForm = ({ closeModal }) => {
+  // State based storage of form data
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -29,6 +30,8 @@ const RideReservationForm = ({ closeModal }) => {
     },
   });
 
+  // Handle update to a input field
+  // Ex: Inputing the first name
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     if (name.startsWith('pickupLocation') || name.startsWith('dropOffLocation')) {
@@ -48,9 +51,13 @@ const RideReservationForm = ({ closeModal }) => {
     }
   };
 
+  // Handle submission of form 
   const handleSubmit = (e) => {
+    // Prevent empty submission
+    // TODO: Parse relevant fields to verify that they are filled correctly
     e.preventDefault();
     console.log(formData);
+    
     //TODO: Send data to an API
     axios.post('http://localhost:8080/RouteReserve/RideForm', formData)
     .then(response => {
@@ -64,12 +71,14 @@ const RideReservationForm = ({ closeModal }) => {
     closeModal();
   };
   
+  // Array of hours 1->12
   const hoursOptions = Array.from({ length: 12 }, (_, i) => (
     <option key={i + 1} value={(i + 1).toString().padStart(2, '0')}>
       {(i + 1).toString().padStart(2, '0')}
     </option>
   ));
 
+  // Array of minutes 0->59
   const minutesOptions = Array.from({ length: 60 }, (_, i) => (
     <option key={i} value={i.toString().padStart(2, '0')}>
       {i.toString().padStart(2, '0')}
@@ -80,6 +89,8 @@ const RideReservationForm = ({ closeModal }) => {
     <div className="box-outline">
       <form className="form-section" onSubmit={handleSubmit}>
         <h2>Ride Reservation</h2>
+
+        {/* First Name Field */}
         <label className="form-label">
           First Name:
           <input
@@ -90,6 +101,8 @@ const RideReservationForm = ({ closeModal }) => {
             className="form-input"
           />
         </label>
+
+        {/* Last Name Field */}
         <label className="form-label">
           Last Name:
           <input
@@ -100,6 +113,8 @@ const RideReservationForm = ({ closeModal }) => {
             className="form-input"
           />
         </label>
+
+        {/* Number passengers Field */}
         <label className="form-label">
           Number of Passengers:
           <input
@@ -110,6 +125,8 @@ const RideReservationForm = ({ closeModal }) => {
             className="form-input"
           />
         </label>
+
+        {/* Carpool option Field */}
         <label className="form-label">
           Willingness to Carpool:
           <div className="form-checkbox">
@@ -133,6 +150,8 @@ const RideReservationForm = ({ closeModal }) => {
             <label>No</label>
           </div>
         </label>
+
+        {/* Dates of Rides Field */}
         <label className="form-label">
           Date of Ride:
           <input
@@ -144,10 +163,12 @@ const RideReservationForm = ({ closeModal }) => {
           />
         </label>
 
+        {/* Time of Ride Field */}
         <div className="time-of-ride">
           <label className="form-label">
             Time of Ride:
             <div className="time-picker">
+              {/* Hour Field */}
               <select
                 name="hour"
                 value={formData.hour}
@@ -156,6 +177,8 @@ const RideReservationForm = ({ closeModal }) => {
               >
                 {hoursOptions}
               </select>
+
+              {/* Minute Field */}
               <select
                 name="minute"
                 value={formData.minute}
@@ -164,6 +187,8 @@ const RideReservationForm = ({ closeModal }) => {
               >
                 {minutesOptions}
               </select>
+
+              {/* AM/PM Field */}
               <select
                 name="period"
                 value={formData.period}
@@ -177,6 +202,7 @@ const RideReservationForm = ({ closeModal }) => {
           </label>
         </div>
         
+        {/* Purpose of ride field */}
         <label className="form-label">
           Purpose of Ride:
           <input
@@ -187,7 +213,8 @@ const RideReservationForm = ({ closeModal }) => {
             className="form-input"
           />
         </label>
-        {/* Pick-Up Location */}
+
+        {/* Pick-Up Location Field */}
         <div className="location-box">
           <h3>Pickup Location</h3>
           <label className="form-label">
@@ -242,7 +269,7 @@ const RideReservationForm = ({ closeModal }) => {
           </label>
         </div>
 
-        {/* Drop-off Location */}
+        {/* Drop-off Location Field */}
         <div className="location-box">
           <h3>Drop-off Location</h3>
           <label className="form-label">
@@ -297,6 +324,7 @@ const RideReservationForm = ({ closeModal }) => {
           </label>
         </div>
 
+        {/* Submit Button Field */}
         <button type="submit" className="submit-button">
           Submit
         </button>
