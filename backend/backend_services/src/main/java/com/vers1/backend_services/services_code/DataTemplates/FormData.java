@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 
 // Sample Java object that can represent form data
 public class FormData {
-    // private String userID;
+    private String userID;
     private String firstName;
     private String lastName;
     private int numberOfPassengers;
@@ -173,35 +173,29 @@ public class FormData {
             this.postalCode = postalCode;
         }
         
+        // @Override
+        // public String toString() {
+        //     return "{" +
+        //         "\"streetAddress\": \"" + getStreetAddress() + "\"," +
+        //         "\"streetAddress2\": \"" + getStreetAddress2() + "\"," +
+        //         "\"city\": \"" + getCity() + "\"," +
+        //         "\"state\": \"" + getState() + "\"," +
+        //         "\"postalCode\": \"" + getPostalCode() + "\"" +
+        //         "}";
+        // }
         @Override
         public String toString() {
-            return "{" +
-                "\"streetAddress\": \"" + getStreetAddress() + "\"," +
-                "\"streetAddress2\": \"" + getStreetAddress2() + "\"," +
-                "\"city\": \"" + getCity() + "\"," +
-                "\"state\": \"" + getState() + "\"," +
-                "\"postalCode\": \"" + getPostalCode() + "\"" +
-                "}";
+            Gson gson = new Gson();
+            return gson.toJson(this);
         }
     }
 
 
     @Override
     public String toString() {
-        return "{" +
-            "\"firstName\": \"" + getFirstName() + "\"," +
-            "\"lastName\": \"" + getLastName() + "\"," +
-            "\"numberOfPassengers\": \"" + getNumberOfPassengers() + "\"," +
-            "\"carpool\": \"" + isCarpool() + "\"," +
-            "\"dateOfRide\": \"" + getDateOfRide() + "\"," +
-            "\"hour\": \"" + getHour() + "\"," +
-            "\"minute\": \"" + getMinute() + "\"," +
-            "\"period\": \"" + getPeriod() + "\"," +
-            "\"purposeOfRide\": \"" + getPurposeOfRide() + "\"," +
-            "\"pickupLocation\": " + this.pickupLocation.toString() + "," +
-            "\"dropOffLocation\": " + this.dropOffLocation.toString() +
-            "}";
-    } 
+        Gson gson = new Gson();
+        return gson.toJson(this);
+    }
 
     public void deserializeFromString(String formDataString){
         // formDataString = formDataString.replaceAll("'", "\"");

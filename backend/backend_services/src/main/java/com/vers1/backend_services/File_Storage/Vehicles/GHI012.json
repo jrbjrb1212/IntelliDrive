@@ -1,0 +1,10 @@
+{
+    "vehicleID": "GHI012",
+    "vehicleHealthy": true,
+    "vehicleMake": "Chevrolet",
+    "vehicleModel": "Malibu",
+    "vehicleYear": "2019",
+    "numberOfPassengers": "5",
+    "vehicleCharge": 55.0
+  }
+  

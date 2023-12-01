@@ -1,0 +1,10 @@
+{
+    "vehicleID": "DEF789",
+    "vehicleHealthy": false,
+    "vehicleMake": "Ford",
+    "vehicleModel": "F-150",
+    "vehicleYear": "2015",
+    "numberOfPassengers": "6",
+    "vehicleCharge": 75.8
+  }
+  

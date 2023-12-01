@@ -1,0 +1,10 @@
+{
+    "vehicleID": "ABC123",
+    "vehicleHealthy": true,
+    "vehicleMake": "Toyota",
+    "vehicleModel": "Camry",
+    "vehicleYear": "2020",
+    "numberOfPassengers": "5",
+    "vehicleCharge": 60.5
+  }
+  

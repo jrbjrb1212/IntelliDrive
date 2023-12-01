@@ -1,0 +1,10 @@
+{
+    "vehicleID": "XYZ456",
+    "vehicleHealthy": true,
+    "vehicleMake": "Honda",
+    "vehicleModel": "Civic",
+    "vehicleYear": "2018",
+    "numberOfPassengers": "4",
+    "vehicleCharge": 45.2
+  }
+  

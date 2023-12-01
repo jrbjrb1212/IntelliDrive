@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/ATP")
+@RequestMapping("/api/ATP")
 public class ReserveRide {
 
     @GetMapping("/ReserveRide")
@@ -17,9 +17,16 @@ public class ReserveRide {
 
     @PostMapping("/ReserveRide")
     public String postReserveRide(@RequestBody String formDataString) {
+        
         // deserialize the string input
         FormData formData = new FormData();
         formData.deserializeFromString(formDataString);
+
+        System.out.println(formData.toString());
+
+        // Need to create a ATP_Class Instance
+        // Need to popular the class
+        // Need to reserve a ride
 
 
         return "Booked ride";

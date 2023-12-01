@@ -1,0 +1,10 @@
+{
+    "vehicleID": "JKL345",
+    "vehicleHealthy": true,
+    "vehicleMake": "BMW",
+    "vehicleModel": "X5",
+    "vehicleYear": "2022",
+    "numberOfPassengers": "5",
+    "vehicleCharge": 90.2
+  }
+  
