@@ -11,6 +11,7 @@ const Forms = () => {
   const [showModal, setShowModal] = useState(false);
 
 
+  // Display the form type options and records what forms they are linked to
   const options = [
     { value: 'userSettings', label: 'User Settings' },
     { value: 'planRide', label: 'Plan Ride' },
@@ -19,12 +20,9 @@ const Forms = () => {
     { value: 'viewRides', label: 'View Booked Rides' },
   ];
 
+  // Once a form is clicked, determine the keyvalue pair from options above
   const mapOptionToForm = (optionValue) => {
     switch (optionValue) {
-      case 'form1':
-        return 'form1'; // Update to match the format expected by FormRenderer
-      case 'form2':
-        return 'form2';
       case 'userSettings':
         return 'userSettings';
       case 'rideReservation':
@@ -36,10 +34,12 @@ const Forms = () => {
       case 'viewRides':
         return 'viewRides';
       default:
-        return 'Form 2'; // Default to a specific form type if needed
+        return 'NULL'; // Default to a specific form type if needed
     }
   };
 
+
+  // Map a selected form to its correct form and display the overlay
   const handleOptionChange = (optionValue) => {
     setSelectedOption(optionValue);
     const mappedFormType = mapOptionToForm(optionValue);
@@ -48,28 +48,38 @@ const Forms = () => {
     }
   };
 
+  // If user selects to close the overlay, close it
   const closeModal = () => {
     setShowModal(false);
   };
+
+  // TODO: Set up a unique userID that will be sent to all backend API requests
+  // - similar to JSON webtokens without as much headache
   const storedUserID = localStorage.getItem('userID');
   console.log("UserID:", storedUserID);
   return (
     <div>
+      {/* Company logo */}
       <div>
         <img src={logo} alt="Logo should be here" className="logo"/>
       </div>
+
       <div className="forms-container">
-        {/* <h1>File Your Forms</h1> */}
         <div className="box-outline">
+
+          {/* Render the possible form options */}
           <FormSelector
             handleOptionChange={handleOptionChange}
             options={options}
             selectedOption={selectedOption}
           />
+
+          {/* If a form is selected, created an overlay of the form */}
           {showModal && (
             <div className="modal-overlay">
               <div className="modal-content">
                 <span className="close" onClick={closeModal}>&times;</span>
+                {/* Map the form selected and then render it */}
                 <FormRenderer formType={mapOptionToForm(selectedOption)} closeModal={closeModal} />
               </div>
             </div>
@@ -77,6 +87,7 @@ const Forms = () => {
         </div>
       </div>
 
+      {/* Navigation buttons */}
       <button className="go-back-button" onClick={() => window.location.href = '/Login'}>
         Go back to Login
       </button>

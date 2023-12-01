@@ -6,6 +6,7 @@ const FormSelector = ({ handleOptionChange, options, selectedOption }) => {
     <div className="form-selector">
       <h2>Form Selector</h2>
       <form>
+        {/* Create a list of selectable forms */}
         {options.map((option) => (
           <div className="radio-item" key={option.value}>
             <input
@@ -13,7 +14,7 @@ const FormSelector = ({ handleOptionChange, options, selectedOption }) => {
               value={option.value}
               checked={selectedOption === option.value}
               onChange={() => handleOptionChange(option.value)}
-              id={option.value} // Assign unique IDs to labels and inputs
+              id={option.value} 
             />
             <label htmlFor={option.value}>{option.label}</label>
           </div>

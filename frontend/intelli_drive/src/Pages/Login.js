@@ -38,34 +38,43 @@ const Login = () => {
 
   return (
       <div>
-          <div>
-              <img src={logo} alt="Logo should be here" className="logo" />
-          </div>
-          <div className="login-container">
-              <h2>Login</h2>
-              <form className="login-form" onSubmit={handleFormSubmission}>
-                  <div className="form-group">
-                      <label htmlFor="username">Username:</label>
-                      <input type="text" id="username" name="username" placeholder="Enter your username" required />
-                  </div>
+        {/* Company logo */}
+        <div>
+            <img src={logo} alt="Logo should be here" className="logo" />
+        </div>
+        <div className="login-container">
+          <h2>Login</h2>
 
-                  <div className="form-group">
-                      <label htmlFor="password">Password:</label>
-                      <input type="password" id="password" name="password" placeholder="Enter your password" required />
-                  </div>
-
-                  <button type="submit">Login</button>
-                  <button onClick={handleCreateAccount}>Create Account</button>
-              </form>
-          </div>
-          {showModal && (
-            <div className="modal-overlay">
-              <div className="modal-content">
-                <span className="close" onClick={closeModal}>&times;</span>
-                <FormRenderer formType='userSettings' closeModal={closeModal}/>
-              </div>
+          {/* Login Field */}
+          <form className="login-form" onSubmit={handleFormSubmission}>
+            {/* UserName Field */}
+            <div className="form-group">
+              <label htmlFor="username">Username:</label>
+              <input type="text" id="username" name="username" placeholder="Enter your username" required />
             </div>
-          )}
+            
+            {/* Password Field */}
+            <div className="form-group">
+              <label htmlFor="password">Password:</label>
+              <input type="password" id="password" name="password" placeholder="Enter your password" required />
+            </div>
+
+            {/* Submission Button */}
+            <button type="submit">Login</button>
+            <button onClick={handleCreateAccount}>Create Account</button>
+          </form>
+        </div>
+
+        {/* Create profile option */}
+        {/* TODO: Currently not working as the login check properly implemented */}
+        {showModal && (
+          <div className="modal-overlay">
+            <div className="modal-content">
+              <span className="close" onClick={closeModal}>&times;</span>
+              <FormRenderer formType='userSettings' closeModal={closeModal}/>
+            </div>
+          </div>
+        )}
       </div>
   );
 };

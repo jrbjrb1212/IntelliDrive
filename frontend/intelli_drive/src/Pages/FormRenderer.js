@@ -7,6 +7,8 @@ import ViewRides from './Forms/ViewRides';
 import "./PagesCSS/Forms.css";
 
 const FormRenderer = ({ formType, closeModal }) => {
+  
+  // Parse the selected formtype and return the HTML of the correct form
   const renderForm = () => {
     switch (formType) {
       case 'form1':
@@ -40,8 +42,6 @@ const FormRenderer = ({ formType, closeModal }) => {
       {renderForm()} {/* Render the form contents */}
     </div>
   );
-  // console.log({formType});
-  // return renderForm();
 };
 
 export default FormRenderer;
